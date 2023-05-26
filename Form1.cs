@@ -234,14 +234,15 @@ namespace FileCsv_Masserini2
             File.Replace("appoggio.csv", fileName, "backup.csv");
         }
 
-        private void Istruzione6()
+        public void Istruzione6()
         {
             StreamReader reader = new StreamReader(fileName);
             n = reader.ReadLine();
             while (n != null)
             {
                 String[] split = n.Split(';');
-                if (split[5] == "false")
+                String[] split1 = split[5].Split(' ');
+                if (split1[0] == "false")
                 {
                     listView1.Items.Add(split[0] + de + split[1] + de + split[2]);
                 }
@@ -333,7 +334,6 @@ namespace FileCsv_Masserini2
             File.Replace("appoggio.csv", fileName, "backup.csv");
         }
         
-ù
         #endregion
     }
 }

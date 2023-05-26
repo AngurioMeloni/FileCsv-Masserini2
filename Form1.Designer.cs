@@ -167,6 +167,7 @@
             this.listView1.Size = new System.Drawing.Size(546, 91);
             this.listView1.TabIndex = 10;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // groupBox1
             // 
