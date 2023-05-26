@@ -222,6 +222,7 @@ namespace FileCsv_Masserini2
             return LMassima;//ritorno il valore di LMassima
         }
 
+
         private void Istruzione4()//funzione di creazione degli spazi per avere i record di lunghezza identica
         {
             StreamReader reader = new StreamReader(fileName);//dichiaro lo streamreader
