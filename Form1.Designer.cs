@@ -385,6 +385,7 @@
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Visible = false;
             // 
             // textBox9
             // 

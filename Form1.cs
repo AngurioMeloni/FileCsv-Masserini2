@@ -14,6 +14,7 @@ namespace FileCsv_Masserini2
 {
     public partial class Form1 : Form
     {
+        #region Dichiarazioni
         public Random r = new Random();
         public string fileName = @"masserini1.csv";
         public string fileName1 = @"masserini.csv";
@@ -31,6 +32,7 @@ namespace FileCsv_Masserini2
         {
 
         }
+        #endregion
 
         #region Pulsanti
         private void button1_Click(object sender, EventArgs e)
@@ -366,6 +368,7 @@ namespace FileCsv_Masserini2
             reader.Close();
             writer.Close();
             File.Replace("Lori.csv", fileName, "backup.csv");
+            File.Delete("Lori.csv");
         }
         #endregion
     }
