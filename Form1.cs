@@ -104,6 +104,24 @@ namespace FileCsv_Masserini2
             }
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            groupBox1.Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int riga = Istruzione7(textBox8.Text);
+            anno = textBox1.Text;
+            nazione = textBox2.Text;
+            MKwh = float.Parse(textBox3.Text);
+            note = textBox4.Text;
+            VRandom = int.Parse(textBox5.Text);
+            Vbooleano = bool.Parse(textBox6.Text);
+            Istruzione8();
+
+        }
+
 
         #endregion
 
@@ -198,7 +216,7 @@ namespace FileCsv_Masserini2
         private void Istruzione4()
         {
             StreamReader reader = new StreamReader(fileName);
-            StreamWriter writer = new StreamWriter("appoggio.csv");
+            StreamWriter writer = new StreamWriter("Lori.csv");
             n = reader.ReadLine();
             while (n != null)
             {
@@ -215,13 +233,13 @@ namespace FileCsv_Masserini2
             }
             reader.Close();
             writer.Close();
-            File.Replace("appoggio.csv", fileName, "backup.csv");
+            File.Replace("Lori.csv", fileName, "backup.csv");
         }
 
         private void Istruzione5()
         {
             StreamReader reader = new StreamReader(fileName);
-            StreamWriter writer = new StreamWriter("appoggio.csv");
+            StreamWriter writer = new StreamWriter("Lori.csv");
             n = reader.ReadLine();
             while (n != null)
             {
@@ -231,7 +249,7 @@ namespace FileCsv_Masserini2
             writer.WriteLine(anno + de + nazione + de + MKwh + de + note + de + VRandom + de + Vbooleano);
             writer.Close();
             reader.Close();
-            File.Replace("appoggio.csv", fileName, "backup.csv");
+            File.Replace("Lori.csv", fileName, "backup.csv");
         }
 
         public void Istruzione6()
@@ -271,25 +289,6 @@ namespace FileCsv_Masserini2
             return -1;
 
         }
-        private int Ricerca2()
-        {
-            StreamReader reader = new StreamReader(fileName);
-            i = 0;
-            n = reader.ReadLine();
-            while (n != null)
-            {
-                String[] split1 = n.Split(';');
-                String[] split2 = split1[Caratteri() - 1].Split(' ');
-                if (split1[2] == p)
-                {
-                    reader.Close();
-                    return i;
-                }
-                n = reader.ReadLine();
-                i++;
-            }
-            return -1;
-        }
         private int Caratteri()
         {
            int contatore = 0;
@@ -302,20 +301,18 @@ namespace FileCsv_Masserini2
         private void Istruzione8()
         {
             StreamReader reader = new StreamReader(fileName);
-            StreamWriter writer = new StreamWriter("appoggio.csv");
+            StreamWriter writer = new StreamWriter("Lori.csv");
             i = 0;
             n = reader.ReadLine();
             while(n != null)
             {
                 if (i != 0)
                 {
-                    string[] split = n.Split(';');
-                    string[] split1 = split[Caratteri() - 1].Split(' ');
-                    int riga = int.Parse(split1[0]);
-                    if(riga == L)
+                    string[] split1 = n.Split(';');
+                    int CampoU = int.Parse(split1[2]);
+                    if(CampoU.ToString() == textBox8.Text)
                     {
                         writer.WriteLine(anno + de + nazione + de + MKwh + de + note + de + VRandom + de + Vbooleano);
-                        writer.WriteLine(n);
                     }
                     else
                     {
@@ -331,7 +328,7 @@ namespace FileCsv_Masserini2
             }
             reader.Close();
             writer.Close();
-            File.Replace("appoggio.csv", fileName, "backup.csv");
+            File.Replace("Lori.csv", fileName, "backup.csv");
         }
         
         #endregion
