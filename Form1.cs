@@ -19,8 +19,7 @@ namespace FileCsv_Masserini2
         public string fileName1 = @"masserini.csv";
         public string n, anno, nazione, note,p;
         public char de = ';';
-        public int LMn = 0, Ln = 0, tempo, VRandom, ad = 0, contatore = 0, i = 0, L;
-        public float MKwh;
+        public int LMn = 0, Ln = 0, tempo, VRandom, ad = 0, contatore = 0, i = 0, L,MKwh;
         public bool Vbooleano;
 
         public Form1()
@@ -74,7 +73,7 @@ namespace FileCsv_Masserini2
         {
             anno = textBox1.Text;
             nazione = textBox2.Text;
-            MKwh = float.Parse(textBox3.Text);
+            MKwh = int.Parse(textBox3.Text);
             note = textBox4.Text;
             VRandom = int.Parse(textBox5.Text);
             Vbooleano = bool.Parse(textBox6.Text);
@@ -114,14 +113,21 @@ namespace FileCsv_Masserini2
             int riga = Istruzione7(textBox8.Text);
             anno = textBox1.Text;
             nazione = textBox2.Text;
-            MKwh = float.Parse(textBox3.Text);
+            MKwh = int.Parse(textBox3.Text);
             note = textBox4.Text;
             VRandom = int.Parse(textBox5.Text);
             Vbooleano = bool.Parse(textBox6.Text);
             Istruzione8();
-
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            groupBox3.Show();
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Istruzione9();
+        }
 
         #endregion
 
@@ -153,7 +159,7 @@ namespace FileCsv_Masserini2
             StreamReader reader = new StreamReader(fileName);
             n = reader.ReadLine();
             reader.Close();
-            contatore = n.Split(';').Length;
+            contatore = n.Split(de).Length;
             return contatore;
         }
 
@@ -186,7 +192,7 @@ namespace FileCsv_Masserini2
             n = reader.ReadLine();
             while (n != null)
             {
-                string[] split = n.Split(';');
+                string[] split = n.Split(de);
                 string[] array = new string[contatore];
                 for (int i = 0; i < contatore; i++)
                 {
@@ -196,7 +202,7 @@ namespace FileCsv_Masserini2
                     ad = 0;
                     while (n != null)
                     {
-                        string[] stringaSplit = n.Split(';');
+                        string[] stringaSplit = n.Split(de);
                         if (ad != 0)
                         {
                             if (LMassima[i] < stringaSplit[i].Length)
@@ -252,13 +258,13 @@ namespace FileCsv_Masserini2
             File.Replace("Lori.csv", fileName, "backup.csv");
         }
 
-        public void Istruzione6()
+        private void Istruzione6()
         {
             StreamReader reader = new StreamReader(fileName);
             n = reader.ReadLine();
             while (n != null)
             {
-                String[] split = n.Split(';');
+                String[] split = n.Split(de);
                 String[] split1 = split[5].Split(' ');
                 if (split1[0] == "false")
                 {
@@ -277,7 +283,7 @@ namespace FileCsv_Masserini2
             i = 0;
             while (n != null)
             {
-                String[] split1 = n.Split(';');
+                String[] split1 = n.Split(de);
                 if (split1[2] == p)
                 {
                     reader.Close();
@@ -295,7 +301,7 @@ namespace FileCsv_Masserini2
             StreamReader reader = new StreamReader(fileName);
             n = reader.ReadLine();
             reader.Close();
-            contatore = n.Split(';').Length;
+            contatore = n.Split(de).Length;
             return contatore;
         }   
         private void Istruzione8()
@@ -308,7 +314,7 @@ namespace FileCsv_Masserini2
             {
                 if (i != 0)
                 {
-                    string[] split1 = n.Split(';');
+                    string[] split1 = n.Split(de);
                     int CampoU = int.Parse(split1[2]);
                     if(CampoU.ToString() == textBox8.Text)
                     {
@@ -331,6 +337,36 @@ namespace FileCsv_Masserini2
             File.Replace("Lori.csv", fileName, "backup.csv");
         }
         
+        private void Istruzione9()
+        {
+            StreamReader reader = new StreamReader(fileName);
+            StreamWriter writer = new StreamWriter("Lori.csv");
+            i = 0;
+            n = reader.ReadLine();
+            while (n != null)
+            {
+                if(i != 0)
+                {
+                    string[] split = n.Split(de);
+                    if (split[2] == textBox9.Text)
+                    {
+                        split[5] = "true";
+                        for(int i = 0; i < split.Length; i++)
+                        {
+                            if (i == split.Length - 1) n = split[i];
+                            else n = split[i] + de;
+                            
+                           
+                        }   
+                    }
+                    writer.WriteLine(n);
+                }
+                i++;
+            }
+            reader.Close();
+            writer.Close();
+            File.Replace("Lori.csv", fileName, "backup.csv");
+        }
         #endregion
     }
 }
