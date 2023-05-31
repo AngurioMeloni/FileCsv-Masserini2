@@ -260,6 +260,7 @@ namespace FileCsv_Masserini2
             writer.Close();//chiudo lo streamwriter
             reader.Close();//chiudo lo streamreader
             File.Replace("Lori.csv", fileName, "backup.csv");//sostituisco il file originale con il file modificato
+            File.Delete("Lori.csv");//elimino il file backup
         }
 
         private void Istruzione6()//Funzione che mi sta tre campi a scelta di ogni record
@@ -333,34 +334,35 @@ namespace FileCsv_Masserini2
             File.Delete("Lori.csv");//elimino il file backup  
         }
         
-        private void Istruzione9()//funzione 9 che permette la cancellazione logica di un record
+        private int Istruzione9()//funzione 9 che permette la cancellazione logica di un record
         {
+            string r;//dichiaro la variabile r
+            r = textBox9.Text;//pongo la variabile r uguale a textBox9
+            int Line = Istruzione7(r);//pongo la variabile r uguale al valore di ritorno della funzione 7
+            i = 0;
             StreamReader reader = new StreamReader(fileName);//dichiaro lo streamreader
             StreamWriter writer = new StreamWriter("Lori.csv");//dichiaro lo streamwriter
-            i = 0;//pongo la variabile i uguale a 0
             n = reader.ReadLine();//pongo la variabile n uguale alla lettura della prima riga del file
-            while (n != null)//ciclo while che mi permette di leggere tutte le righe del file
+            while(n != null)
             {
-                if(i != 0)//se i è diverso da 0 
+                String[]split1 = n.Split(de);//dichiaro un array di stringhe
+                String[]split2 = split1[5].Split(' ');//dichiaro un array di stringhe
+                if (split1[0] == r.ToString())
                 {
-                    string[] split = n.Split(de);//dichiaro un array di stringhe
-                    if (split[2] == textBox9.Text)//se split[2] è uguale al valore di textBox9
-                    {
-                        split[5] = "true";//pongo split[5] uguale a true
-                        for (int i = 0; i < split.Length; i++)//ciclo for che mi permette di leggere tutte le righe del file
-                        {
-                            if (i == split.Length - 1) n = split[i];//se i è uguale a split.Length - 1 pongo n uguale a split[i]
-                            else n = split[i] + de;//altrimenti pongo n uguale a split[i] + de
-                        }
-                    }           
+                    writer.WriteLine(split1[0] + de + split1[1] + de + split1[2] + de + split1[3] + de + split1[4] + de + "true" + de + split2[0]);//scrivo nel file la riga
+                }
+                else
+                {
                     writer.WriteLine(n);//scrivo nel file la riga
                 }
-                i++;//incremento i
+                i++;
+                n = reader.ReadLine();//leggo la riga successiva
             }
             reader.Close();//chiudo lo streamreader
             writer.Close();//chiudo lo streamwriter
             File.Replace("Lori.csv", fileName, "backup.csv");//sostituisco il file originale con il file modificato
             File.Delete("Lori.csv");//elimino il file backup
+            return 0;//ritorno 0
         }
         #endregion
     }

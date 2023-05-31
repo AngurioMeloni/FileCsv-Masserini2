@@ -171,9 +171,9 @@
             // 
             this.listView1.HideSelection = false;
             this.listView1.LabelEdit = true;
-            this.listView1.Location = new System.Drawing.Point(246, 26);
+            this.listView1.Location = new System.Drawing.Point(137, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(546, 91);
+            this.listView1.Size = new System.Drawing.Size(546, 76);
             this.listView1.TabIndex = 10;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -256,14 +256,14 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(674, 53);
+            this.textBox6.Location = new System.Drawing.Point(661, 53);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 22);
             this.textBox6.TabIndex = 11;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(544, 53);
+            this.textBox5.Location = new System.Drawing.Point(526, 52);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 22);
             this.textBox5.TabIndex = 10;
@@ -285,7 +285,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(671, 26);
+            this.label6.Location = new System.Drawing.Point(658, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 16);
             this.label6.TabIndex = 5;
@@ -294,7 +294,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(541, 26);
+            this.label5.Location = new System.Drawing.Point(523, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 16);
             this.label5.TabIndex = 4;
